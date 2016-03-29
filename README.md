@@ -21,6 +21,34 @@
 |Problems|Soluctions|
 |:--|:--|
 | Designing Service Layers | Module Pattern |
+| Overly Complicated Object Interfaces | Façade Pattern |
+| Visibility Into State Changes | Observer Pattern |
+
+### What constitutes a pattern
+
++ It solves a problem
++ It is a proven concept
++ The solution is not obvious
++ It described a relationship
++ It has a significant human component
+
+Patterns also give us a common vocabulary
+
+### Types of patterns
+
++ Creational (new instances of an object)
+  - Constructor
+  - Module
+  - Factory
+  - Singleton
++ Structural (makeup of the objects itselves)
+  - Decorator
+  - Façade
+  - Flyweight
++ Behavioral (how objects relate to each other)
+  - Command
+  - Mediator
+  - Observer
 
 ## Objects in Javascript
 
