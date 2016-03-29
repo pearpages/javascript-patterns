@@ -16,6 +16,12 @@
 > "and the solution
 -does the arrangement we propose *resolve* the problem?"
 
+### [The Gang of Four](https://en.wikipedia.org/wiki/Design_Patterns)
+
+|Problems|Soluctions|
+|:--|:--|
+| Designing Service Layers | Module Pattern |
+
 ## Objects in Javascript
 
 ## Creational Design Patterns
