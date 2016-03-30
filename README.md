@@ -52,6 +52,71 @@ Patterns also give us a common vocabulary
 
 ## Objects in Javascript
 
+### Creating Objects
+
+```javascript
+var obj = {};
+var nextObj = Object.create(Object.prototype); // we usually use it for inheritance
+var lastObj = new Object(); // not very used because in ES6 we have 'classes' now
+```
+
+### Reading and Writing Attributes
+
+```javascript
+var obj = {};
+obj.param = 'new value';
+console.log(obj.param);
+```
+
+```javascript
+var obj = {};
+obj['param'] = 'new value';
+console.log(obj['param']);
+```
+
+```javascript
+var obj = {};
+var val = 'value';
+obj[val] = 'new value';
+console.log(obj[val]); // new value
+```
+
+### Define Property
+
+```javascript
+Object.defineProperty(obj, 'name', {
+  value: 'my name',
+  writable: true,
+  enumerable: true,
+  configurable: true
+});
+```
+
+```javascript
+var task = {
+  title: 'My Title',
+  description: 'My Description'
+};
+
+Object.defineProperty(task, 'toString', {
+  value: function() {
+    return this.title + ' ' + this.description;
+  },
+  writable: false,
+  enumerable: false,
+  configurable: false
+});
+
+// the following won't work because we already set the property to false
+Object.defineProperty(task, 'toString', {
+  enumerable: true
+});
+
+task.toString = 'hi'; // it won't change because we defined the property as not writable
+
+console.log(Object.keys(task)); // it won't show toString because we've defined as not enumerable
+```
+
 ## Creational Design Patterns
 
 ## Structural Design Patterns
