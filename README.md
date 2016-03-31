@@ -117,6 +117,39 @@ task.toString = 'hi'; // it won't change because we defined the property as not 
 console.log(Object.keys(task)); // it won't show toString because we've defined as not enumerable
 ```
 
+### Inheritance
+
+```javascript
+var task = {
+  title: 'My Title',
+  description: 'My Description'
+};
+
+Object.defineProperty(task, 'toString', {
+  value: function() {
+    return this.title + ' ' + this.description;
+  },
+  writable: false,
+  enumerable: false,
+  configurable: false
+});
+```
+
+```javascript
+var urgentTask = Object.create(task);
+
+Object.defineProperty(urgentTask, 'toString', {
+  value: function() {
+    return this.title + ' ' + is urgent;
+  },
+  writable: false,
+  enumerable: false,
+  configurable: false
+});
+
+console.log(urgentTask.toString()); // My Title is urgent
+```
+
 ## Creational Design Patterns
 
 ## Structural Design Patterns
