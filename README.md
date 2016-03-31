@@ -152,6 +152,35 @@ console.log(urgentTask.toString()); // My Title is urgent
 
 ## Creational Design Patterns
 
+### Constructor Pattern
+
+Create objects from functions. The name of our function will be the name of our objects.
+
+When using the **new** keyword
+
++ Creates a new object
++ Links to an object prototype
++ Bind 'this' to the new object scope
++ Implicitly returns 'this'
+
+```javascript
+function MyObject(param1, param2) {
+  this.param1 = param1;
+  this.param2 = param2;
+  this.toString = function () {
+    return this.param1 + ' ' + this.param2;
+  }
+}
+```
+
+### Prototypes
+
+### Module Pattern
+
+### Factory Pattern
+
+### Singleton Pattern
+
 ## Structural Design Patterns
 
 ## Behavioral Design Patterns
