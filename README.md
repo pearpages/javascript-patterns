@@ -385,6 +385,59 @@ module.exports = new repoFactory;
 
 ### Singleton Pattern
 
+> Used to restrict an object to one instance of that object across the application.
+
+```javascript
+'use strict';
+
+var TaskRepo = (function () {
+  var taskRepo;
+  function createRepo() {
+    var taskRepo = new Object('Task');
+    return taskRepo;
+  }
+  return {
+    getInstance: function () {
+      if (!taskRepo) {
+        taskRepo = createRepo();
+      }
+      return taskRepo;
+    }
+  }
+})();
+```
+
+#### Singletons in Node 
+
+Node.js that uses CommonJS, caches everything that is used in a *require*.
+
+> Modules are cached after the first time they are loaded.
+
+> If you want to have a module execute code multiple times, then export a function, an call that function.
+
+So if we want to have a Singleton we have to do the opposite: call the function.
+
+```javascript
+'use strict';
+
+var repo = function () {
+
+  var called = 0;
+
+  var save = function (task) {
+    called++;
+    console.log('Saving ' + task + ' Called ' + called + ' times');
+  }
+  console.log('newing up task repo');
+  return {
+    save: save
+  }
+}
+module.exports = new repo; // we make it a Singleton
+```
+
+#### Singletons in Angular
+
 ## Structural Design Patterns
 
 ## Behavioral Design Patterns
