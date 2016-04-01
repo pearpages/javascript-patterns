@@ -167,7 +167,7 @@ When using the **new** keyword
 function MyObject(param1, param2) {
   this.param1 = param1;
   this.param2 = param2;
-  this.toString = function () {
+  this.toString = function () { // <-- check Prototypes section
     return this.param1 + ' ' + this.param2;
   }
 }
@@ -203,6 +203,14 @@ task4.save();
 ```
 
 ### Prototypes
+
+> An encapsulation of properties that an object links to.
+
+Signature
+
+```javascript
+ClassName.prototype.methodName = function (arguments) {};
+```
 
 ### Module Pattern
 
