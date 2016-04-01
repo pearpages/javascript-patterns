@@ -254,6 +254,36 @@ class Task {
 module.exports = Task;
 ``` 
 
+#### Constructor in Angular
+
+There are several ways of doing this. We could also use *value* for example.
+
+```javascript
+(function() {
+  'use strict';
+
+  angular.module("myApp")
+  .factory('Task',function () {
+    var Task = function (name) {
+      this.name = name;
+      this.completed = false;
+    };
+
+    Task.prototype.complete = function () {
+      console.log('completing task: '+this.name);
+      this.completed = true;
+    };
+
+    Task.prototype.save = function () {
+      console.log('saving Task: ' + this.name);
+    };
+
+    return Task;
+  });
+
+})();
+```
+
 ### Module Pattern
 
 ### Factory Pattern
