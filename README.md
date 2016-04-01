@@ -202,7 +202,7 @@ task3.save();
 task4.save();
 ```
 
-### Prototypes
+#### Prototypes
 
 > An encapsulation of properties that an object links to.
 
@@ -211,6 +211,26 @@ Signature
 ```javascript
 ClassName.prototype.methodName = function (arguments) {};
 ```
+
+```javasccript
+var Task = function (name) {
+  this.name = name;
+  this.completed = false;
+};
+
+Task.prototype.complete = function () {
+  console.log('completing task: '+this.name);
+  this.completed = true;
+};
+
+Task.prototype.save = function () {
+  console.log('saving Task: ' + this.name);
+};
+```
+
+#### Classes
+
+
 
 ### Module Pattern
 
