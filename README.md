@@ -361,6 +361,28 @@ module.exports = repo();
 
 ### Factory Pattern
 
++ Simplifies object creation
++ Creating different objects based on need
++ Repository creation
+
+```javascript
+var repoFactory = function () {
+  var repos = this; // used as cache
+  // repoList could come from anywhere
+  var repoList = [
+    {name: 'task', source: './taskRepository'},
+    {name: 'user', source: './userRepository'},
+    {name: 'project', source: './projectRepository'}
+  ];
+
+  repoList.forEach(function(repo) {
+    repos[repo.name] = require(repo.source)();
+  });
+};
+
+module.exports = new repoFactory;
+```
+
 ### Singleton Pattern
 
 ## Structural Design Patterns
