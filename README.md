@@ -286,6 +286,79 @@ There are several ways of doing this. We could also use *value* for example.
 
 ### Module Pattern
 
+In it's core is just an **object literal**. 
+
+We have one instance of it. Generally we use if tor services.
+
+```javascript
+var Module = function () {
+  var privateVar = 'I am private ...';
+  return {
+    method1: function () {},
+    method2: function () {}
+  }
+}
+```
+
+#### Revealing Module Pattern
+
+```javascript
+var repo = function () {
+
+  var tasks = {};
+
+  return {
+    get: get,
+    save: save
+  };
+
+  function get(id) {
+    console.log('Getting task '+ id);
+    return tasks[id];
+  }
+
+  function save(task) {
+    console.log('Saving ' + task.name + ' to the db');
+    tasks[task.id] = task;
+  }
+}
+
+module.exports = repo();
+```
+
+#### Module Pattern in Angular
+
+```javascript
+(function() {
+  'use strict';
+
+  var app = angular.module("myApp");
+
+  var taskRepo = function () {
+    var tasks = {};
+
+    return {
+      get: get,
+      save: save
+    };
+
+    function get(id) {
+      console.log('Getting task '+ id);
+      return tasks[id];
+    }
+
+    function save(task) {
+      console.log('Saving ' + task.name + ' to the db');
+      tasks[task.id] = task;
+    }
+  }
+
+  app.service('taskRepo',taskRepo);
+
+  
+})();
+```
+
 ### Factory Pattern
 
 ### Singleton Pattern

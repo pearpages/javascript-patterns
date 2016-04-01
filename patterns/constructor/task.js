@@ -1,8 +1,9 @@
 'use strict';
 
-var Task = function (name) {
-	this.name = name;
-	this.completed = false;
+var Task = function (data) {
+	this.id = data.id;
+	this.name = data.name;
+	this.completed = data.completed || false;
 };
 
 Task.prototype.complete = function () {
