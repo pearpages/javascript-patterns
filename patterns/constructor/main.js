@@ -1,8 +1,9 @@
 'use strict';
 
 var Task = require('./task');
+var Task2 = require('./class');
 
-(function run(Task) {
+function run(Task) {
 	var task1 = new Task('Go to the Mall');
 	var task2 = new Task('Buy food');
 	var task3 = new Task('Do some exercise');
@@ -13,4 +14,7 @@ var Task = require('./task');
 	task2.save();
 	task3.save();
 	task4.save();	
-})(Task);
+}
+
+run(Task);
+run(Task2);

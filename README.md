@@ -230,7 +230,29 @@ Task.prototype.save = function () {
 
 #### Classes
 
+If we are not using node we may need use a Transpiler like [Babel](https://babeljs.io/).
 
+```javascript
+'use strict'
+
+class Task {
+  constructor(name) {
+    this.name = name;
+    this.completed = false;
+  };
+
+  complete() {
+    console.log('completing task: '+this.name);
+    this.completed = true;
+  };
+
+  save() {
+    console.log('saving Task: ' + this.name);
+  };
+}
+
+module.exports = Task;
+``` 
 
 ### Module Pattern
 
