@@ -437,9 +437,15 @@ var repo = function () {
 module.exports = new repo; // we make it a Singleton
 ```
 
-Now everytime we require *repo.js* will get the same isntance.
+Now everytime we require *repo.js* will get the same instance.
 
 #### Singletons in Angular
+
+> All Services are singletons; they get instantiated once per app. They can be of any type, whether it be a primitive, object literal, function, or even an instance of a custom type.
+
+> The value, factory, service, constant, and provider methods are all providers. They teach the Injector how to instantiate the Services.
+
+[Stackoverflow service vs provider vs factory](http://stackoverflow.com/questions/15666048/angularjs-service-vs-provider-vs-factory)
 
 ## Structural Design Patterns
 
