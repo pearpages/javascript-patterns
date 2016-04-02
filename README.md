@@ -418,6 +418,7 @@ Node.js that uses CommonJS, caches everything that is used in a *require*.
 So if we want to have a Singleton we have to do the opposite: call the function.
 
 ```javascript
+// repo.js
 'use strict';
 
 var repo = function () {
@@ -435,6 +436,8 @@ var repo = function () {
 }
 module.exports = new repo; // we make it a Singleton
 ```
+
+Now everytime we require *repo.js* will get the same isntance.
 
 #### Singletons in Angular
 
