@@ -457,6 +457,15 @@ Now everytime we require *repo.js* will get the same instance.
 
 ### Decorator
 
+> Used to add new functionality to an existing object, without being obtrusive.
+
++ More complete inheritance
++ Wraps an object
++ Protects existing objects
++ Allows extended functionality
+
+
+
 ### Facade
 
 ### Flyweight
