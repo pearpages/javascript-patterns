@@ -464,6 +464,43 @@ Now everytime we require *repo.js* will get the same instance.
 + Protects existing objects
 + Allows extended functionality
 
+#### Decorating a single Object
+
+```javascript
+var Task = function (name) {
+  // ...
+}
+
+Task.prototype.complete = function () {
+  // ...
+}
+
+Task.prototype.save = function () {
+  // ...
+}
+```
+
+Now we decorate this object to create a new one
+
+```javascript
+var myTask = new Task('Urgent Task');
+
+urgentTask.priority = 2; // new attribute
+
+// new method notify
+urgentTask.notify = function() {
+  console.log('notifying...');
+};
+
+// calling the original save
+urgentTask.save = function () {
+  this.notify();
+  Task.prototype.save.call(this); // we call right here
+};
+```
+
+#### Creating multiple decorated Objects (subtype)
+
 
 
 ### Facade
