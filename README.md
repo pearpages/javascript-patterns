@@ -525,6 +525,57 @@ _p.save = function() {
 module.exports = UrgentTask;
 ```
 
+#### Decorating objects in Angular
+
+```javascript
+function TaskController(Task,UrgentTask, TaskRepository) {
+  var ctrl = this;
+  ctrl.tasks = [];
+  ctrl.taks.push(new Task(TaskRepositoryget(1)));
+  ctrl.taks.push(new Task(TaskRepositoryget(2)));
+  ctrl.taks.push(new UrgentTask(TaskRepositoryget(3)));
+  ctrl.taks.push(new UrgentTask(TaskRepositoryget(4)));
+}
+```
+
+```javascript
+(function() {
+    'use strict';
+
+    angular.module("myApp")
+    // pay attention to the dependency
+    .factory('UrgentTask',['Task',UrgentTask]);
+
+    function UrgentTask(Task) {
+        var UrgentTask = function (name, priority) {
+            // calling the 'parent'
+            Task.call(this,name);
+            this.priority = priority;
+        };
+
+        // create a new independent prototype
+        var _p = UrgentTask.prototype = Object.create(Task.prototype);
+
+        // decorating
+        _p.notify = function () {
+            console.log('notifying important people');
+        };
+
+        _p.save = function () {
+            this.notify();
+            console.log('do special stuff before saving');
+            Task.prototype.save.call(this);
+        };
+
+        return UrgentTask;
+    }
+})();
+```
+
+#### Decorating Angular Services
+
+
+
 ### Facade
 
 ### Flyweight
