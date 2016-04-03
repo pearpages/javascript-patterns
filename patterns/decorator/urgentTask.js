@@ -6,7 +6,7 @@ var UrgentTask = function (name, priority) {
     this.priority = priority;
 };
 
-// Overwritting the prototype so we don't mess witht the parent
+// Overwritting the prototype so we don't 'mess' witht the parent
 var _p = UrgentTask.prototype = Object.create(Task.prototype);
 
  _p.notify = function () {
