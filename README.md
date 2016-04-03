@@ -449,4 +449,16 @@ Now everytime we require *repo.js* will get the same instance.
 
 ## Structural Design Patterns
 
+> Concerned with how objects are made up and simplify relationships between objects.
+
++ Deal with relationship of objects
+  - Extend functionality
+  - Simplify functionality
+
+### Decorator
+
+### Facade
+
+### Flyweight
+
 ## Behavioral Design Patterns
