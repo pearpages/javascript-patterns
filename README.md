@@ -574,7 +574,26 @@ function TaskController(Task,UrgentTask, TaskRepository) {
 
 #### Decorating Angular Services
 
+Mainly we decorate an Angular Service so we can do some *configuration* on it.
 
+```javascript
+(function() {
+  'use strict';
+
+  var app = angular.module("myApp");
+  
+  // $delegate is the original service
+  app.decorator('taskRepo',function ($delegate) {
+    var oldSave = $delegate.save;
+    $delegate.save = function (task) {
+      console.log('Special loggin for task ' + task.name);
+      oldSave(task);
+    };
+
+    return $delegate;
+  });
+})();
+```
 
 ### Facade
 
