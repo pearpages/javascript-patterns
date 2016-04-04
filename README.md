@@ -597,6 +597,12 @@ Mainly we decorate an Angular Service so we can do some *configuration* on it.
 
 ### Facade
 
+> Used to rpovied a simplified interface to a complicated system.
+
++ Facade hides the complexity from us
++ Simplifies the interface
++ jQuery is a good example (think of the DOM)
+
 ### Flyweight
 
 ## Behavioral Design Patterns
