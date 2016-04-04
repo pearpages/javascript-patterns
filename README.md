@@ -605,6 +605,58 @@ Mainly we decorate an Angular Service so we can do some *configuration* on it.
 
 The main difference between the decorator and the facade is that we **are not adding funtionality**, we are **createing a new interface**.
 
+```javascript
+var TaskService = function () {
+  // ...
+};
+
+var TakServiceWrapper = function() {
+  // we are using the module revealing pattern here
+  
+  return {
+    completeAndNotify: completeAndNotify
+  };
+
+  function completeAndNotify (myTask) {
+    TaskService.complete(myTask);
+    if (myTask.completed == true) {
+      TaskService.setCompleteDate(myTask);
+      TaskService.notifyCompletion(myTask, myTask.user);
+      TaskService.save(myTask);
+    }
+  }
+};
+
+module.exports = TakServiceWrapper();
+```
+
+#### Facade in Angular
+
+```javascript
+(function() {
+  'use strict';
+
+  angular.module("myApp")
+  .service('taskServiceFacade',['taskService',taskServiceFacade]);
+
+  function taskServiceFacade(taskService) {
+
+    return {
+      completeAndNotify: completeAndNotify
+    };
+
+    function completeAndNotify() {
+      TaskService.complete(task);
+      if (task.completed === true) {
+        TaskService.setCompleteDate(task);
+        TaskService.notifyCompletion(task,task.user);
+        TaskService.save(task);
+      }
+    }
+  }
+})();
+```
+
 ### Flyweight
 
 ## Behavioral Design Patterns
