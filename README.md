@@ -603,6 +603,8 @@ Mainly we decorate an Angular Service so we can do some *configuration* on it.
 + Simplifies the interface
 + jQuery is a good example (think of the DOM)
 
+The main difference between the decorator and the facade is that we **are not adding funtionality**, we are **createing a new interface**.
+
 ### Flyweight
 
 ## Behavioral Design Patterns
