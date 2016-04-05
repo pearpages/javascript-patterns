@@ -24,4 +24,8 @@ _p.save = function () {
 	Task.prototype.save.call(this);
 };
 
+_p.removeObserver = function (observer) {
+	this.observers.removeAt(this.observers.indexOf(observer,0));
+};
+
 module.exports = ObservableTask;

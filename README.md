@@ -744,6 +744,9 @@ module.exports = function (){
 + One object is the focal point
 + Group of objects watch for changes
 
+```javascript
+```
+
 ### Mediator Pattern
 
 ### Command Pattern

@@ -20,3 +20,8 @@ task1.addObserver(ls.update);
 task1.addObserver(audit.update);
 
 task1.save();
+
+task1.removeObserver(ls);
+task1.removeObserver(audit);
+
+task1.save();

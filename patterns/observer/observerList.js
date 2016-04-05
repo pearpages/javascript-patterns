@@ -18,4 +18,21 @@ _p.count = function () {
 	return this.observerList.length;
 };
 
+_p.removeAt = function (index) {
+	this.observerList.splice(index,1);
+};
+
+_p.indexOf = function (obj, startIndex) {
+	var i = startIndex;
+
+	while (i < this.observerList.length) {
+		if (this.observerList[i] === obj) {
+			return i;
+		}
+		i++;
+	}
+
+	return -1;
+};
+
 module.exports = ObserverList;
