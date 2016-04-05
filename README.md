@@ -872,6 +872,106 @@ module.exports = ObserverList;
 + One object manages all communication
 + Many to many relationship
 
+```javascript
+'use strict';
+
+var Task = function(data) {
+  this.name = data.name;
+  this.priority = data.priority;
+  this.project = data.project;
+  this.user = data.user;
+  this.completed = data.completed;
+};
+
+var _p = Task.prototype;
+
+_p.complete = function () {
+  console.log('completing task: ' + this.name);
+  this.completed = true;
+};
+
+_p.save = function () {
+  console.log('saving task: ' + this.name);
+};
+
+module.exports = Task;
+```
+
+```javascript
+var mediator = function () {
+  var channels = {};
+
+  return {
+    channels: channels,
+    subscribe: subscribe,
+    publish: publish
+  };
+
+  function subscribe (channel, context, func) {
+    if (!channels[channel]) {
+      channels[channel] = [];
+    }
+    channels[channel].push({
+      context: context,
+      func: func
+    });
+  }
+
+  function publish (channel) {
+    if (!channels[channel]) {
+      return false;
+    }
+
+    var args = Array.prototype.slice.call(arguments, 1); // getting rid of the first argument 'channel'
+
+    for (var i = 0; i < channels[channel].length; i++) {
+      var sub = channels[channel][i];
+      sub.func.apply(sub.context, args);
+    }
+  }
+
+};
+
+module.exports = mediator();
+```
+
+```javascript
+var mediator = require('./mediator');
+
+var Task = require('./task');
+
+// overwritting original complete function
+Task.prototype.complete = function (){
+  console.log('Completed task '+this.name);
+  mediator.publish('complete', this, 'hellooooooo');
+};
+
+var Not = new require('./observers/notificationService');
+var Ls = new require('./observers/loggingService');
+var Audit = new require('./observers/auditingService');
+
+var task1 = new Task({
+  name: 'demo task',
+  user: 'John Doe'
+});
+
+var task2 = new Task({
+  name: 'buy toilet papper',
+  user: 'Pere Pages'
+});
+
+var not = new Not();
+var ls = new Ls();
+var audit = new Audit();
+
+mediator.subscribe('complete', not, not.update); // channel, context, function
+mediator.subscribe('complete', ls, ls.update); 
+mediator.subscribe('complete', audit, audit.update); 
+
+task1.complete();
+task2.complete();
+```
+
 ### Command Pattern
 
 > Encapsulates the calling of a metohd as an object.
@@ -881,3 +981,98 @@ Fully decouples the execution from the implemenation.
 + Allows for less fragile implementations
 + Support undo operations
 + Suports auditing and logging of opperations
+
+```javascript
+'use strict';
+
+var repo = function () {
+
+    var tasks = {};
+    var commands = [];
+    var me = {
+        get: get,
+        save: save
+    };
+
+    return {
+        execute: execute,
+        tasks: tasks,
+        commands: commands,
+        replay: replay
+    };
+
+    function get (id) {
+        console.log('Getting task ' + id);
+        return {
+            name: 'new task from the db'
+        };
+    }
+
+    function save (task) {
+        tasks[task.id] = task;
+        console.log('Saving "' + task.name + '" to the db');
+    }
+
+    function executeNoLog (name) {
+        var args = Array.prototype.slice.call(arguments, 1);
+
+        if (me[name]) {
+            return me[name].apply(repo, args);
+        }
+        return false;
+    }
+
+    function execute (name) {
+        var args = Array.prototype.slice.call(arguments, 1);
+
+        commands.push({
+            name: name,
+            obj: args[0]
+        });
+
+        if (me[name]) {
+            return me[name].apply(repo, args);
+        }
+        return false;
+    }
+
+    function replay () {
+        for (var i = 0; i < commands.length; i++) {
+            var command = commands[i];
+
+            executeNoLog(command.name, command.obj);
+        }
+    }
+}();
+
+module.exports = repo;
+```
+
+```javascript
+var command = require('./repo');
+
+command.execute('save', {
+    id: 1,
+    name: 'Task 1',
+    completed: false
+});
+command.execute('save', {
+    id: 2,
+    name: 'Task 2',
+    completed: false
+});
+command.execute('save', {
+    id: 3,
+    name: 'Task 3',
+    completed: false
+});
+command.execute('save', {
+    id: 4,
+    name: 'Task 4',
+    completed: false
+});
+
+console.log(command.tasks);
+console.log(command.commands);
+command.replay();
+```

@@ -6,7 +6,7 @@ var Task = require('./task');
 Task.prototype.complete = function (){
 	console.log('Completed task '+this.name);
 	mediator.publish('complete', this, 'hellooooooo');
-}
+};
 
 var Not = new require('./observers/notificationService');
 var Ls = new require('./observers/loggingService');
