@@ -661,4 +661,10 @@ module.exports = TakServiceWrapper();
 
 > Conserves memory by sharing portions of an object between objects.
 
++ Flyweight shares data accross objects
++ Results in a smaller memory footprint
++ Bunt only if you have laaaaarge numbers of objects
+
+
+
 ## Behavioral Design Patterns
