@@ -745,6 +745,123 @@ module.exports = function (){
 + Group of objects watch for changes
 
 ```javascript
+'use strict';
+
+var ObservableTask = require('./observableTask');
+var Notification = require('./observers/notificationService');
+var Logging = require('./observers/loggingService');
+var Auditing = require('./observers/auditingService');
+
+var task1 = new ObservableTask({
+  name: 'whatever task',
+  user: 'ppages'
+});
+
+
+var not = new Notification();
+var ls = new Logging();
+var audit = new Auditing();
+
+task1.addObserver(not.update);
+task1.addObserver(ls.update);
+task1.addObserver(audit.update);
+
+task1.save();
+
+task1.removeObserver(ls.update);
+task1.removeObserver(audit.update);
+
+task1.save();
+```
+
+Observer example
+
+```javascript
+module.exports = function () {
+  var message = 'Auditing ';
+  this.update = function (task) {
+    console.log(message + task.user + ' for task ' + task.name);
+  }
+};
+```
+
+Subject
+
+```javascript
+var Task = require('./task');
+var ObserverList = require('./observerList');
+
+var ObservableTask = function (data) {
+  Task.call(this, data);
+  this.observers = new ObserverList();
+};
+
+var _p = ObservableTask.prototype = Object.create(Task.prototype);
+
+_p.addObserver = function (observer) {
+  this.observers.add(observer);
+};
+
+_p.notify = function (context) {
+  var observerCount  = this.observers.count();
+  for (var i = observerCount - 1; i >= 0; i--) {
+    this.observers.get(i)(context);
+  }
+};
+
+_p.save = function () {
+  this.notify(this);
+  Task.prototype.save.call(this);
+};
+
+_p.removeObserver = function (observer) {
+  this.observers.removeAt(this.observers.indexOf(observer,0));
+};
+
+module.exports = ObservableTask;
+```
+
+ObservableList
+
+```javascript
+var ObserverList = function () {
+  this.observerList = [];
+};
+
+var _p = ObserverList.prototype;
+
+_p.add = function (observer) {
+  return this.observerList.push(observer);
+}
+
+_p.get = function (index) {
+  if (index > -1 && index < this.observerList.length ) {
+    return this.observerList[index];
+  }
+}
+
+_p.count = function () {
+  return this.observerList.length;
+};
+
+_p.removeAt = function (index) {
+  this.observerList.splice(index,1);
+};
+
+_p.indexOf = function (obj, startIndex) {
+  var i = startIndex;
+
+  while (i < this.observerList.length) {
+    if (this.observerList[i] === obj) {
+      return i;
+    }
+    i++;
+  }
+
+  return -1;
+};
+
+module.exports = ObserverList;
 ```
 
 ### Mediator Pattern
