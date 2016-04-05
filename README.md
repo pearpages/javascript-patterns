@@ -665,6 +665,66 @@ module.exports = TakServiceWrapper();
 + Results in a smaller memory footprint
 + Bunt only if you have laaaaarge numbers of objects
 
+Original object
 
+```javascript
+'use strict';
+
+var Task = function (data) {
+  this.name = data.name;
+  this.priority = data.priority;
+  this.project = data.project;
+  this.user = data.user;
+  this.completed = data.completed;
+};
+
+module.exports = Task;
+```
+
+New Object (without the common parts)
+
+```javascript
+'use strict';
+
+var factory = require('./flyweightFactory');
+
+var Task = function (data) {
+  this.flyweight = factory.get(data.project,data.priority,data.user,data.completed);
+  this.name = data.name;
+};
+
+module.exports = Task;
+```
+
+Keeping the common parts for all the objects
+
+```javascript
+'use strict';
+
+var FlyWeight = require('./flyweight');
+
+module.exports = function (){
+  var flyweights = {};
+  
+  return {
+    get: get,
+    getCount: getCount
+  };
+
+  function getCount() {
+    var count = 0;
+    for (var f in flyweights) count++;
+      return count;
+  }
+
+  function get(project, priority, user, completed) {
+    var index = project+priority+user+completed;
+    if(!flyweights[index]) {
+      flyweights[index] = new FlyWeight(project,priority,user,completed);
+    }
+    return flyweights[index];
+  }
+}();
+```
 
 ## Behavioral Design Patterns
