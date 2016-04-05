@@ -1,6 +1,6 @@
 'use strict';
 
-var Task = require('./task');
+var Task = require('./fTask');
 
 var TaskCollection = function () {
 	var tasks = {};
