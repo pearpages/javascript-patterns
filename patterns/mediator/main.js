@@ -5,7 +5,7 @@ var Task = require('./task');
 // overwritting original complete function
 Task.prototype.complete = function (){
 	console.log('Completed task '+this.name);
-	mediator.publish('complete', this);
+	mediator.publish('complete', this, 'hellooooooo');
 }
 
 var Not = new require('./observers/notificationService');
