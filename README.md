@@ -873,3 +873,11 @@ module.exports = ObserverList;
 + Many to many relationship
 
 ### Command Pattern
+
+> Encapsulates the calling of a metohd as an object.
+
+Fully decouples the execution from the implemenation.
+
++ Allows for less fragile implementations
++ Support undo operations
++ Suports auditing and logging of opperations
