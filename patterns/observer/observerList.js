@@ -14,4 +14,8 @@ _p.get = function (index) {
 	}
 }
 
+_p.count = function () {
+	return this.observerList.length;
+};
+
 module.exports = ObserverList;
