@@ -866,4 +866,10 @@ module.exports = ObserverList;
 
 ### Mediator Pattern
 
+> Controls communication between objects so neither object has to be coupled to the others.
+
++ Allows for loosely coupled system
++ One object manages all communication
++ Many to many relationship
+
 ### Command Pattern
