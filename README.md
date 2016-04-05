@@ -728,3 +728,18 @@ module.exports = function (){
 ```
 
 ## Behavioral Design Patterns
+
+> Concerned with the assignment of responsabilities between objects and how they communicate.
+
++ Deals with the responsibilities of objects
++ Help objects cooperate
++ Assigns clear hierarchy
++ Can encapsulate requests
+
+### Observer Pattern
+
+
+
+### Mediator Pattern
+
+### Command Pattern
