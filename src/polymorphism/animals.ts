@@ -15,6 +15,7 @@ export class Cat extends Animal {
 }
 
 export class Polymorphism {
+    private constructor() {}
     static run() {
         const animals = [
             new Dog(),
