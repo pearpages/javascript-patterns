@@ -15,3 +15,5 @@
 > **The Decorator Pattern** attaches additional responsabilities to an object dynamically. Decorators provide flexible alternative to subclassing for extending functionality.
 > The decorator adds its own behavior either before and/or after delegating to the object it decorates to do the rest of the job.
 > New behavior is typically added by doing computation before or after an existing method in the component.
+
+> **SimpleFactory** personally (me) I see the Factory a pattern where we remove all the creational conditionals from everywhere to put them in only one place so we avoid D.R.Y.
