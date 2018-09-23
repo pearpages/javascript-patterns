@@ -17,3 +17,7 @@
 > New behavior is typically added by doing computation before or after an existing method in the component.
 
 > **SimpleFactory** personally (me) I see the Factory a pattern where we remove all the creational conditionals from everywhere to put them in only one place so we avoid D.R.Y.
+
+> **StaticFaactory** when the factory is a static method we call it that way.
+
+> **FactoryMethodPattern** encapsulates object creation by _letting subclasses decide what objectes create_. Defines an interface for creating an object, but let subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.
