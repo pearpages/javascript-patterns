@@ -8,7 +8,14 @@ export class FactoryMethod {
 abstract class PizzaStore {
     abstract _createPizza(pizzaType: PizzaType): Pizza;
     orderPizza(pizzaType: PizzaType): Pizza {
-        return this._createPizza(pizzaType);
+        // The Factory Method
+        const pizza = this._createPizza(pizzaType);
+
+        pizza.prepare();
+        pizza.bake();
+        pizza.cut();
+        pizza.box();
+        return pizza;
     }
 }
 
@@ -53,7 +60,12 @@ class ChicaoPizzaStore extends PizzaStore {
     }
 }
 
-abstract class Pizza {}
+abstract class Pizza {
+    prepare() {}
+    bake() {}
+    cut() {}
+    box() {}
+}
 
 class NYStyleCheesePizza extends Pizza {}
 class NYStylePepperoniPizza extends Pizza {}

@@ -1,7 +1,7 @@
 # Patterns in Typescript
 
 + Take what varies and "encapsulate" it so won't affect the rest of the code.
-+ Program to an interface, not an implementation. Which really means program to a _supertype_.
++ Program to an interface, not an implementation. Which really means program to a **supertype**.
 + Favor Composition over inheritance.
 + Strive for loosely coupled designs between objects that interact.
 + Classes should be open for extension, but closed for modification.
@@ -21,3 +21,13 @@
 > **StaticFaactory** when the factory is a static method we call it that way.
 
 > **FactoryMethodPattern** encapsulates object creation by _letting subclasses decide what objectes create_. Defines an interface for creating an object, but let subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.
+> For me it's all about the factories forcing them to share a common behavior, but having liberties in how to create the objects and making them return the same supertype.
+> Factory Method is very good at Dependeny Inversion.
+
+> **Dependeny Inversion principle** both high-level and low-level modules depending on abstraction.
+
+## Dependency Inversion
+
++ If you use **new**, you'll be holding a reference to a concrete class. Use factory to get around that!
++ If you derive from a concrete class, you're depending on a concrete class. Derive from an abstraction, like an interface or an abstract class.
++ If you override an implemented method, then your base class wasn't really an abstraction to start with. Those methods implemented in the base class are meant to be shared by all your subclasses.
