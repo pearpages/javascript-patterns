@@ -8,6 +8,7 @@ import { Strategy } from './strategy/duckt';
 import * as mapSite from './factories/gangOfFour/map-site';
 import { Polymorphism } from './polymorphism/animals';
 import { CommandExample } from './command/command';
+import { AdapterExample } from './adapter/turkey';
 
 (() => {
     // Polymorphism.run();
@@ -18,5 +19,6 @@ import { CommandExample } from './command/command';
     // FactoryMethod.run();
     // AbstractFactory.run();
     // SingletonExample.run();
-    CommandExample.run();
+    // CommandExample.run();
+    AdapterExample.run();
 })();

@@ -36,6 +36,11 @@
 
 > **Macro Commands** are a simple extension of Command that allow multiple commands to be invoked. Likewise, Macro Commands can easily support undo().
 
+> **Adapter Pattern** converts the interface of a class into another interface the clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces.
+> Adapter
+  + Object Adapter
+  + Class Adapter (Through multiple inheritance)
+
 ## Dependency Inversion
 
 + If you use **new**, you'll be holding a reference to a concrete class. Use factory to get around that!
