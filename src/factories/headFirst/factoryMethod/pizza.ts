@@ -1,14 +1,26 @@
 export class FactoryMethod {
     private constructor() {}
     static run() {
+        const nyPizzaStore = new NYPizzaStore();
+        const nyCheesePizza = nyPizzaStore.orderPizza(PizzaType.CHEESE);
+        const chicagoPizzaStore = new ChicagoPizzaStore();
+        const chicagoPepperoniPizza = chicagoPizzaStore.orderPizza(PizzaType.PEPPERONI);
 
+        PizzaDescriptor.describe(nyCheesePizza);
+        PizzaDescriptor.describe(chicagoPepperoniPizza);
+    }
+}
+
+abstract class PizzaDescriptor {
+    static describe(pizza: Pizza) {
+        console.log(pizza.getDescription());
     }
 }
 
 abstract class PizzaStore {
+    // The Factory Method
     abstract _createPizza(pizzaType: PizzaType): Pizza;
     orderPizza(pizzaType: PizzaType): Pizza {
-        // The Factory Method
         const pizza = this._createPizza(pizzaType);
 
         pizza.prepare();
@@ -30,30 +42,30 @@ export class NYPizzaStore extends PizzaStore {
     _createPizza(pizzaType: PizzaType): Pizza {
         switch (pizzaType) {
             case PizzaType.CHEESE:
-            return new NYStyleCheesePizza();
+            return new NYStyleCheesePizza('NY Cheese Pizza');
             case PizzaType.PEPPERONI:
-            return new NYStylePepperoniPizza();
+            return new NYStylePepperoniPizza('NY Pepperoni Pizza');
             case PizzaType.CLAM:
-            return new NYStyleClamPizza();
+            return new NYStyleClamPizza('NY Clam Pizza');
             case PizzaType.VEGGIE:
-            return new NYStyleVeggiePizza();
+            return new NYStyleVeggiePizza('NY Veggie Pizza');
             default:
             throw new Error('Unknown type');
         }
     }
 }
 
-class ChicaoPizzaStore extends PizzaStore {
+class ChicagoPizzaStore extends PizzaStore {
     _createPizza(pizzaType: PizzaType): Pizza {
         switch (pizzaType) {
             case PizzaType.CHEESE:
-            return new ChicagoStyleCheesePizza();
+            return new ChicagoStyleCheesePizza('Chicago Cheese Pizza');
             case PizzaType.PEPPERONI:
-            return new ChicagoStylePepperoniPizza();
+            return new ChicagoStylePepperoniPizza('Chicago Pepperoni Pizza');
             case PizzaType.CLAM:
-            return new ChicagoStyleClamPizza();
+            return new ChicagoStyleClamPizza('Chicago Clam Pizza');
             case PizzaType.VEGGIE:
-            return new ChicagoStyleVeggiePizza();
+            return new ChicagoStyleVeggiePizza('Chicago Veggie Pizza');
             default:
             throw new Error('Unknown type');
         }
@@ -61,6 +73,13 @@ class ChicaoPizzaStore extends PizzaStore {
 }
 
 abstract class Pizza {
+    _description: string;
+    constructor(description: string) {
+        this._description = description;
+    }
+    getDescription(): string {
+        return this._description;
+    }
     prepare() {}
     bake() {}
     cut() {}

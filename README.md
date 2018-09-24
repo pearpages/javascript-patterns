@@ -5,6 +5,7 @@
 + Favor Composition over inheritance.
 + Strive for loosely coupled designs between objects that interact.
 + Classes should be open for extension, but closed for modification.
++ Depend on abstractions. Do not depend on concrete classes.
 
 > **Polymorphism** is the provision of a single interface to entities of different types or the use of a single symbol to represent multiple different types.
 
@@ -21,6 +22,7 @@
 > **StaticFaactory** when the factory is a static method we call it that way.
 
 > **FactoryMethodPattern** encapsulates object creation by _letting subclasses decide what objectes create_. Defines an interface for creating an object, but let subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.
+> Defines an interface for creating an object, but let subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to the subclasses.
 > For me it's all about the factories forcing them to share a common behavior, but having liberties in how to create the objects and making them return the same supertype.
 > Factory Method is very good at Dependeny Inversion.
 

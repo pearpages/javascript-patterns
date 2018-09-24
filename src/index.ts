@@ -1,3 +1,5 @@
+import { AbstractFactory } from './factories/headFirst/abstractFactory/pizza';
+import { FactoryMethod } from './factories/headFirst/factoryMethod/pizza';
 import { SimpleFactory } from './factories/headFirst/simpleFactory/pizza';
 import { Decorator } from './decorator/beverage';
 import { ObserverExample } from './observer/weather-station';
@@ -10,5 +12,7 @@ import { Polymorphism } from './polymorphism/animals';
     // Strategy.run();
     // ObserverExample.run();
     // Decorator.run();
-    SimpleFactory.run();
+    // SimpleFactory.run();
+    // FactoryMethod.run();
+    AbstractFactory.run();
 })();
