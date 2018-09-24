@@ -1,3 +1,4 @@
+import { SingletonExample } from './singleton/singleton';
 import { AbstractFactory } from './factories/headFirst/abstractFactory/pizza';
 import { FactoryMethod } from './factories/headFirst/factoryMethod/pizza';
 import { SimpleFactory } from './factories/headFirst/simpleFactory/pizza';
@@ -14,5 +15,6 @@ import { Polymorphism } from './polymorphism/animals';
     // Decorator.run();
     // SimpleFactory.run();
     // FactoryMethod.run();
-    AbstractFactory.run();
+    // AbstractFactory.run();
+    SingletonExample.run();
 })();

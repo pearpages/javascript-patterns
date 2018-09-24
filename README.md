@@ -26,7 +26,11 @@
 > For me it's all about the factories forcing them to share a common behavior, but having liberties in how to create the objects and making them return the same supertype.
 > Factory Method is very good at Dependeny Inversion.
 
+> **Abstract Factory** Provides an interface for creating families of related or dependent objects without specifying their concrete classes.
+
 > **Dependeny Inversion principle** both high-level and low-level modules depending on abstraction.
+
+> **Singleton** Pattern ensures a class has only one instance, and provides a global point of access to it.
 
 ## Dependency Inversion
 
