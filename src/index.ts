@@ -9,6 +9,7 @@ import * as mapSite from './factories/gangOfFour/map-site';
 import { Polymorphism } from './polymorphism/animals';
 import { CommandExample } from './command/command';
 import { AdapterExample } from './adapter/turkey';
+import { FacadeExample } from './facade/home-theater';
 
 (() => {
     // Polymorphism.run();
@@ -20,5 +21,6 @@ import { AdapterExample } from './adapter/turkey';
     // AbstractFactory.run();
     // SingletonExample.run();
     // CommandExample.run();
-    AdapterExample.run();
+    // AdapterExample.run();
+    FacadeExample.run();
 })();

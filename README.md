@@ -6,6 +6,11 @@
 + Strive for loosely coupled designs between objects that interact.
 + Classes should be open for extension, but closed for modification.
 + Depend on abstractions. Do not depend on concrete classes.
++ Principle of _Least Knowledge_ (aka Law of Demeter): talk only to your immediate friends.
+  + The object itself
+  + Objects passed in as a parameter to the method
+  + Any object the method creates or instantiates
+  + Do not call methods on objects that were returned from calling other methods
 
 > **Polymorphism** is the provision of a single interface to entities of different types or the use of a single symbol to represent multiple different types.
 
@@ -40,6 +45,8 @@
 > Adapter
   + Object Adapter
   + Class Adapter (Through multiple inheritance)
+
+> **Facade Pattern** provides a unified interface to a set of interfaces  in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use.
 
 ## Dependency Inversion
 
