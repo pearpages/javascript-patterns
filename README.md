@@ -32,6 +32,10 @@
 
 > **Singleton** Pattern ensures a class has only one instance, and provides a global point of access to it.
 
+> **The Command Pattern** encapsulates a request as an object, thereby letting you parameterize other objects with different requests, queue or log requests, and support undoable operations.
+
+> **Macro Commands** are a simple extension of Command that allow multiple commands to be invoked. Likewise, Macro Commands can easily support undo().
+
 ## Dependency Inversion
 
 + If you use **new**, you'll be holding a reference to a concrete class. Use factory to get around that!
