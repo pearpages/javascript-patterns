@@ -53,3 +53,12 @@
 + If you use **new**, you'll be holding a reference to a concrete class. Use factory to get around that!
 + If you derive from a concrete class, you're depending on a concrete class. Derive from an abstraction, like an interface or an abstract class.
 + If you override an implemented method, then your base class wasn't really an abstraction to start with. Those methods implemented in the base class are meant to be shared by all your subclasses.
++ Introduction
++ Objects in Javascript
++ Creational Design Patterns
++ Structural Design Patterns
++ Behavioral Design Patterns
+
+---
+
+[READ MORE]('./docs/more.md')
