@@ -1,15 +1,15 @@
-import { SingletonExample } from './singleton/singleton';
-import { AbstractFactory } from './factories/headFirst/abstractFactory/pizza';
-import { FactoryMethod } from './factories/headFirst/factoryMethod/pizza';
-import { SimpleFactory } from './factories/headFirst/simpleFactory/pizza';
-import { Decorator } from './decorator/beverage';
-import { ObserverExample } from './observer/weather-station';
-import { Strategy } from './strategy/duckt';
-import * as mapSite from './factories/gangOfFour/map-site';
-import { Polymorphism } from './polymorphism/animals';
-import { CommandExample } from './command/command';
-import { AdapterExample } from './adapter/turkey';
-import { FacadeExample } from './facade/home-theater';
+import { SingletonExample } from './web/singleton/singleton';
+import { AbstractFactory } from './web/factories/headFirst/abstractFactory/pizza';
+import { FactoryMethod } from './web/factories/headFirst/factoryMethod/pizza';
+import { SimpleFactory } from './web/factories/headFirst/simpleFactory/pizza';
+import { Decorator } from './web/decorator/beverage';
+import { ObserverExample } from './web/observer/weather-station';
+import { Strategy } from './web/strategy/duckt';
+import * as mapSite from './web/factories/gangOfFour/map-site';
+import { Polymorphism } from './web/polymorphism/animals';
+import { CommandExample } from './web/command/command';
+import { AdapterExample } from './web/adapter/turkey';
+import { FacadeExample } from './web/facade/home-theater';
 
 (() => {
     // Polymorphism.run();
