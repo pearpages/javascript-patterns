@@ -61,4 +61,4 @@
 
 ---
 
-[READ MORE]('/docs/more.md')
+[READ MORE](/docs/more.md)
