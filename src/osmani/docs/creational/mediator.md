@@ -43,33 +43,37 @@ var pubsub = {};
 })(pubsub);
 
 var grid = {
-    refreshData: function() {
-        console.log('retrieved latest data from data cache');
-        console.log('updated grid component');
+    addEntry: function (data) {
+        if (data !== 'undefined') { console.log('Entry:'
+            + data.title
+            + ' Changenet / %'
+            + data.changenet
+            + '/' + data.percentage + ' % added');
+        }
     },
 
-    updateCounter: function() {
-        console.log('data last updated at: ' + getCurrentTime());
+    updateCounter: function (timestamp) {
+        console.log('grid last updated at: ' + timestamp);
     }
 };
 
 // a very basic mediator
-
 var gridUpdate = function(topics, data) {
-    grid.refreshData();
-    grid.updateCounter();
+    grid.addEntry(data);
+    grid.updateCounter(data.timestamp);
 }
 
 var dataSubscription = pubsub.subscribe('dataUpdated', gridUpdate);
-pubsub.publish( 'dataUpdated', 'new stock data available!' );
-pubsub.publish( 'dataUpdated', 'new stock data available!' );
-
-function getCurrentTime() {
-    var date = new Date(),
-        m = date.getMonth() + 1,
-        d = date.getDate(),
-        y = date.getFullYear(),
-        t = date.toLocaleTimeString().toLowerCase();
-    return (m + '/' + d + '/' + y + ' ' + t);
-}
+pubSub.publish('dataUpdated', {
+    title: "Microsoft shares",
+    changenet: 4,
+    percentage: 33,
+    timestamp: '17:34:12' }
+);
+pubSub.publish('dataUpdated', {
+    title: "Dell shares",
+    changenet: 10,
+    percentage: 20,
+    timestamp: '17:35:16' }
+);
 ```
